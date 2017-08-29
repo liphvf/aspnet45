@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProductList.aspx.cs" Inherits="WingtipToys.ProductList" %>
+﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+    CodeBehind="ProductList.aspx.cs" Inherits="WingtipToys.ProductList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <section>
@@ -6,18 +7,19 @@
             <hgroup>
                 <h2><%: Page.Title %></h2>
             </hgroup>
+
             <asp:ListView ID="productList" runat="server"
                 DataKeyNames="ProductID" GroupItemCount="4"
                 ItemType="WingtipToys.Models.Product" SelectMethod="GetProducts">
                 <EmptyDataTemplate>
-                    <table>
+                    <table runat="server">
                         <tr>
                             <td>No data was returned.</td>
                         </tr>
                     </table>
                 </EmptyDataTemplate>
                 <EmptyItemTemplate>
-                    <td />
+                    <td runat="server" />
                 </EmptyItemTemplate>
                 <GroupTemplate>
                     <tr id="itemPlaceholderContainer" runat="server">
@@ -30,9 +32,8 @@
                             <tr>
                                 <td>
                                     <a href="ProductDetails.aspx?productID=<%#:Item.ProductID%>">
-                                        <image src='/Catalog/Images/Thumbs/<%#:Item.ImagePath%>'
-                                            width="100" height="75" border="1" />
-                                    </a>
+                                        <img src="/Catalog/Images/Thumbs/<%#:Item.ImagePath%>"
+                                            width="100" height="75" style="border: solid" /></a>
                                 </td>
                             </tr>
                             <tr>
@@ -47,6 +48,11 @@
                                         <b>Price: </b><%#:String.Format("{0:c}", Item.UnitPrice)%>
                                     </span>
                                     <br />
+                                    <a href="/AddToCart.aspx?productID=<%#:Item.ProductID %>">
+                                        <span class="ProductListItem">
+                                            <b>Add To Cart<b>
+                                        </span>
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -57,17 +63,17 @@
                     </td>
                 </ItemTemplate>
                 <LayoutTemplate>
-                    <table style="width: 100%;">
+                    <table runat="server" style="width: 100%;">
                         <tbody>
-                            <tr>
-                                <td>
+                            <tr runat="server">
+                                <td runat="server">
                                     <table id="groupPlaceholderContainer" runat="server" style="width: 100%">
-                                        <tr id="groupPlaceholder"></tr>
+                                        <tr id="groupPlaceholder" runat="server"></tr>
                                     </table>
                                 </td>
                             </tr>
-                            <tr>
-                                <td></td>
+                            <tr runat="server">
+                                <td runat="server"></td>
                             </tr>
                             <tr></tr>
                         </tbody>
