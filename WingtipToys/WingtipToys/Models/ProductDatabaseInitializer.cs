@@ -8,8 +8,8 @@ namespace WingtipToys.Models
 
         protected override void Seed(ProductContext context)
         {
-            GetCategories().ForEach(c => context.Categories.Add(c));
-            GetProducts().ForEach(p => context.Products.Add(p));
+            context.Categories.AddRange(GetCategories());
+            context.Products.AddRange(GetProducts());
         }
         private static List<Category> GetCategories()
         {
