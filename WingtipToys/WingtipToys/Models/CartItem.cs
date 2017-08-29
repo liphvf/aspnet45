@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace WingtipToys.Models
 {
@@ -15,7 +12,7 @@ namespace WingtipToys.Models
 
         public int Quantity { get; set; }
 
-        public System.DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
 
         public int ProductId { get; set; }
 
