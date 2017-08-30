@@ -107,7 +107,7 @@ namespace WingtipToys.Logic
 
         public void UpdateShoppingCartDatabase(String cartId, ShoppingCartUpdates[] CartItemUpdates)
         {
-            using (var db = new ProductContext())
+            using (var db = new WingtipToys.Models.ProductContext())
             {
                 try
                 {
@@ -210,6 +210,17 @@ namespace WingtipToys.Logic
             public int ProductId;
             public int PurchaseQuantity;
             public bool RemoveItem;
+        }
+
+        public void MigrateCart(string cartId, string userName)
+        {
+            var shoppingCart = _db.ShoppingCartItems.Where(c => c.CartId == cartId);
+            foreach (CartItem item in shoppingCart)
+            {
+                item.CartId = userName;
+            }
+            HttpContext.Current.Session[CartSessionKey] = userName;
+            _db.SaveChanges();
         }
     }
 }
