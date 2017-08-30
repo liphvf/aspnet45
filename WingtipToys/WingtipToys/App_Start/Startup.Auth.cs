@@ -11,7 +11,8 @@ using WingtipToys.Models;
 
 namespace WingtipToys
 {
-    public partial class Startup {
+    public partial class Startup
+    {
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301883
         public void ConfigureAuth(IAppBuilder app)
@@ -59,11 +60,11 @@ namespace WingtipToys
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "498666483708-qok6fimqma6b6hlvmkqno14oj02k39jn.apps.googleusercontent.com",
+                ClientSecret = "shUst-CSZAifFfQlyONT_U80"
+            });
         }
     }
 }
