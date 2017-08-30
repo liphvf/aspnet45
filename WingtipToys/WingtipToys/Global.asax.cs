@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WingtipToys.Logic;
 using WingtipToys.Models;
 
 namespace WingtipToys
@@ -17,6 +18,10 @@ namespace WingtipToys
 
             // Inicia a base de produtos
             Database.SetInitializer(new ProductDatabaseInitializer());
+
+            // Create the custom role and user.
+            RoleActions roleActions = new RoleActions();
+            roleActions.AddUserAndRole();
         }
     }
 }
